@@ -16,13 +16,13 @@ function App() {
   const bidRender = depth.bids.map((bid, index) =>
     <Row key={index}>
       <Col sm={6}>{bid[1]}</Col>
-      <Col sm={6}>{bid[0]}</Col>
+      <Col className="buyPrice" sm={6}>{bid[0]}</Col>
     </Row>
   )
 
   const askRender = depth.asks.map((ask, index) =>
     <Row key={index}>
-      <Col sm={6}>{ask[0]}</Col>
+      <Col className="sellPrice" sm={6}>{ask[0]}</Col>
       <Col sm={6}>{ask[1]}</Col>
     </Row>
   )
@@ -35,7 +35,10 @@ function App() {
   }
 
   const bindingData = (depth) => {
-    if (depth.bids.length > 0) {
+    const bids = depth.bids.length > 0 ? depth.bids.sort((a, b) => Number(a[0]) - Number(b[0])) : []
+    const asks = depth.bids.length > 0 ? depth.bids.sort((a, b) => Number(b[0]) - Number(a[0])) : []
+
+    if (bids.length > 0) {
       const amount = depth.bids.reduce((previous, current) => {
         const size = Number(current[1])
         const price = Number(current[0])
@@ -44,7 +47,7 @@ function App() {
       setAmountBid(amount)
     }
 
-    if (depth.asks.length > 0) {
+    if (asks.length > 0) {
       const size = depth.asks.reduce((previous, current) => {
         return previous + Number(current[1])
       }, 0)
@@ -56,7 +59,6 @@ function App() {
   useEffect(() => {
     const socket = io(socketUrl, { transports: ['websocket'] })
     socket.on("depth_fetch", data => {
-      console.log(data)
       bindingData(data)
     })
 
