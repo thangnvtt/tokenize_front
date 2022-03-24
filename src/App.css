@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.depth {
+  border: 1px solid #92a8d1;
+  border-radius: 8px;
+}
+
+.depthHeader {
+  border-bottom: 1px solid #92a8d1;
+}
+
+.summary {
+  text-align: left;
+  padding-top: 10px;
+}
