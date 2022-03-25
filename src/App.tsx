@@ -11,7 +11,7 @@ function App() {
   const maxAmountBid = 5
   const maxSize = 150
   const url = `https://tokenizetest.herokuapp.com/api/depth?symbol=${symbol}&maxAmountBid=${maxAmountBid}&maxSizeAsk=${maxSize}`
-  const socketUrl = 'ws://tokenizetest.herokuapp.com'
+  const socketUrl = 'wss://tokenizetest.herokuapp.com'
 
   const bidRender = depth.bids.map((bid, index) =>
     <Row key={index}>
