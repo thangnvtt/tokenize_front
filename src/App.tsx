@@ -7,7 +7,7 @@ function App() {
   const symbol = 'ETHBTC'
   const [depth, setDepth] = useState<any>({ bids: [], asks: [] })
   const [amountBid, setAmountBid] = useState<number>(0)
-  const [sizeAsk, setSizeAsk] = useState<any>(0)
+  const [sizeAsk, setSizeAsk] = useState<number>(0)
   const maxAmountBid = 5
   const maxSize = 150
   const url = `https://tokenizetest.herokuapp.com/api/depth?symbol=${symbol}&maxAmountBid=${maxAmountBid}&maxSizeAsk=${maxSize}`
