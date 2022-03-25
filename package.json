@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://tokenizedevt.herokuapp.com"
+  "proxy": "tokenizetest.herokuapp.com"
 }
